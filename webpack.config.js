@@ -1,10 +1,12 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const merge = require('webpack-merge');
 const pug = require('./webpack/pug');
 const devserver = require('./webpack/devserver');
 const sass = require('./webpack/sass');
 const css = require('./webpack/css');
+const extractCSS = require('./webpack/css.extract');
 
 const PATHS = {
     source: path.join(__dirname, 'source'),
@@ -19,7 +21,7 @@ const common = merge([
         },
         output: {
             path: PATHS.build,
-            filename: '[name].js'
+            filename: 'js/[name].js'
         },
         mode: 'none',
         plugins: [
@@ -27,15 +29,34 @@ const common = merge([
                 // title: 'Webpack app'
                 // template: PATHS.source + '/index.pug'
                 filename: 'index.html',
-                chunks: ['index'],
+                chunks: ['index', 'common'],
                 template: PATHS.source + '/pages/index/index.pug'
             }),
             new HtmlWebpackPlugin({
                 filename: 'blog.html',
-                chunks: ['blog'],
+                chunks: ['blog', 'common'],
                 template: PATHS.source + '/pages/blog/blog.pug'
+            })/* ,
+            new webpack.optimize.CommonsChunkPlugin({
+                name: 'common' // будет автоматически выносить общий код для всех страниц
+            }) */,
+            new webpack.ProvidePlugin({
+                $: 'jquery',
+                jQuery: 'jquery'
             })
         ],
+        optimization: {
+            splitChunks: {
+                name: 'common',
+                cacheGroups: {
+                    commons: {
+                        name: "common",
+                        chunks: "initial",
+                        minChunks: 2
+                    }
+                }
+            }
+    }
     },
     pug()
 ]);
@@ -44,7 +65,10 @@ const common = merge([
 
 module.exports = function (env) {
     if (env === 'production') {
-        return common;
+        return merge([
+            common,
+            extractCSS()
+        ]);
     }
     if (env === 'development') {
         return merge([ // Object.assign
