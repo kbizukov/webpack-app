@@ -106,7 +106,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _men
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (array, className) {\r\n    var menu = document.createElement('ul');\r\n    menu.className = className;\r\n    var listItems = '';\r\n    array.array.forEach(item => {\r\n        listItems += '<li>' + item + '</li>';\r\n    });\r\n    menu.innerHTML = listItems;\r\n    return menu;\r\n});\n\n//# sourceURL=webpack:///./source/menu.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (array, className) {\r\n    var menu = document.createElement('ul');\r\n    menu.className = className;\r\n    var listItems = '';\r\n    array.forEach(item => {\r\n        listItems += '<li>' + item + '</li>';\r\n    });\r\n    menu.innerHTML = listItems;\r\n    return menu;\r\n});\n\n//# sourceURL=webpack:///./source/menu.js?");
 
 /***/ })
 
