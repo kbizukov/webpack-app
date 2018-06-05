@@ -81,33 +81,39 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./source/pages/blog/blog.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ "./source/components/menu/menu.js":
-/*!****************************************!*\
-  !*** ./source/components/menu/menu.js ***!
-  \****************************************/
-/*! exports provided: default */
+/******/ ([
+/* 0 */,
+/* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (array, className) {\r\n    var menu = document.createElement('ul');\r\n    menu.className = className;\r\n    var listItems = '';\r\n    array.forEach(item => {\r\n        listItems += '<li>' + item + '</li>';\r\n    });\r\n    menu.innerHTML = listItems;\r\n    return menu;\r\n});\n\n//# sourceURL=webpack:///./source/components/menu/menu.js?");
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (function (array, className) {
+    var menu = document.createElement('ul');
+    menu.className = className;
+    var listItems = '';
+    array.forEach(item => {
+        listItems += '<li>' + item + '</li>';
+    });
+    menu.innerHTML = listItems;
+    return menu;
+});
 
 /***/ }),
-
-/***/ "./source/pages/blog/blog.js":
-/*!***********************************!*\
-  !*** ./source/pages/blog/blog.js ***!
-  \***********************************/
-/*! no exports provided */
+/* 2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_menu_menu__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../components/menu/menu */ \"./source/components/menu/menu.js\");\n\r\nvar menu = Object(_components_menu_menu__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(['Главная', 'Блог'], 'menu');\r\ndocument.body.appendChild(menu);\r\n\r\nconsole.log(\"in blog.js\");\n\n//# sourceURL=webpack:///./source/pages/blog/blog.js?");
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_menu_menu__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+
+var menu = Object(_components_menu_menu__WEBPACK_IMPORTED_MODULE_0__["default"])(['Главная', 'Блог'], 'menu');
+document.body.appendChild(menu);
+
+console.log("in blog.js");
 
 /***/ })
-
-/******/ });
+/******/ ]);

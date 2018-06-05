@@ -1,64 +1,53 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const merge = require('webpack-merge');
+const pug = require('./webpack/pug');
+const devserver = require('./webpack/devserver');
 
 const PATHS = {
     source: path.join(__dirname, 'source'),
     build: path.join(__dirname, 'build')
 };
 
-const common = {
-    entry: {
-        'index': PATHS.source + '/pages/index/index.js',
-        'blog': PATHS.source + '/pages/blog/blog.js'
+const common = merge([
+    {
+        entry: {
+            'index': PATHS.source + '/pages/index/index.js',
+            'blog': PATHS.source + '/pages/blog/blog.js'
+        },
+        output: {
+            path: PATHS.build,
+            filename: '[name].js'
+        },
+        mode: 'none',
+        plugins: [
+            new HtmlWebpackPlugin({
+                // title: 'Webpack app'
+                // template: PATHS.source + '/index.pug'
+                filename: 'index.html',
+                chunks: ['index'],
+                template: PATHS.source + '/pages/index/index.pug'
+            }),
+            new HtmlWebpackPlugin({
+                filename: 'blog.html',
+                chunks: ['blog'],
+                template: PATHS.source + '/pages/blog/blog.pug'
+            })
+        ],
     },
-    output: {
-        path: PATHS.build,
-        filename: '[name].js'
-    },
-    mode: 'development',
-    plugins: [
-        new HtmlWebpackPlugin({
-            // title: 'Webpack app'
-            // template: PATHS.source + '/index.pug'
-            filename: 'index.html',
-            chunks: ['index'],
-            template: PATHS.source + '/pages/index/index.pug'
-        }),
-        new HtmlWebpackPlugin({
-            filename: 'blog.html',
-            chunks: ['blog'],
-            template: PATHS.source + '/pages/blog/blog.pug'
-        })
-    ],
-    module: {
-        rules: [
-            {
-                test: /\.pug$/,
-                loader: 'pug-loader',
-                options: {
-                    pretty: true // расставить отступы и переносы строк
-                }
-            }
-        ]
-    }
-};
+    pug()
+]);
 
-const developmentConfig = {
-    devServer: { // webpack-dev-server settings
-        stats: 'errors-only',
-        port: 9000
-    }
-};
+
 
 module.exports = function (env) {
     if (env === 'production') {
         return common;
     }
     if (env === 'development') {
-        return Object.assign(
-            {},
+        return merge([ // Object.assign
             common,
-            developmentConfig
-        );
+            devserver()
+        ]);
     }
 };
