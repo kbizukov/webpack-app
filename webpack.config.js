@@ -7,6 +7,7 @@ const devserver = require('./webpack/devserver');
 const sass = require('./webpack/sass');
 const css = require('./webpack/css');
 const extractCSS = require('./webpack/css.extract');
+const images = require('./webpack/images');
 // const uglifyJS = require('./webpack/js.uglify');
 
 const PATHS = {
@@ -58,9 +59,10 @@ const common = merge([
                     }
                 }
             }
-    }
+        }
     },
-    pug()
+    pug(),
+    images()
 ]);
 
 
