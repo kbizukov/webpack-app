@@ -81,32 +81,32 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./source/index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./source/pages/blog/blog.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./source/index.js":
-/*!*************************!*\
-  !*** ./source/index.js ***!
-  \*************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _menu__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./menu */ \"./source/menu.js\");\n\r\nvar menu = Object(_menu__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(['Главная', 'Обо мне', 'Портфолио'], 'menu');\r\ndocument.body.appendChild(menu);\n\n//# sourceURL=webpack:///./source/index.js?");
-
-/***/ }),
-
-/***/ "./source/menu.js":
-/*!************************!*\
-  !*** ./source/menu.js ***!
-  \************************/
+/***/ "./source/components/menu/menu.js":
+/*!****************************************!*\
+  !*** ./source/components/menu/menu.js ***!
+  \****************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (array, className) {\r\n    var menu = document.createElement('ul');\r\n    menu.className = className;\r\n    var listItems = '';\r\n    array.forEach(item => {\r\n        listItems += '<li>' + item + '</li>';\r\n    });\r\n    menu.innerHTML = listItems;\r\n    return menu;\r\n});\n\n//# sourceURL=webpack:///./source/menu.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (function (array, className) {\r\n    var menu = document.createElement('ul');\r\n    menu.className = className;\r\n    var listItems = '';\r\n    array.forEach(item => {\r\n        listItems += '<li>' + item + '</li>';\r\n    });\r\n    menu.innerHTML = listItems;\r\n    return menu;\r\n});\n\n//# sourceURL=webpack:///./source/components/menu/menu.js?");
+
+/***/ }),
+
+/***/ "./source/pages/blog/blog.js":
+/*!***********************************!*\
+  !*** ./source/pages/blog/blog.js ***!
+  \***********************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_menu_menu__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../components/menu/menu */ \"./source/components/menu/menu.js\");\n\r\nvar menu = Object(_components_menu_menu__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(['Главная', 'Блог'], 'menu');\r\ndocument.body.appendChild(menu);\r\n\r\nconsole.log(\"in blog.js\");\n\n//# sourceURL=webpack:///./source/pages/blog/blog.js?");
 
 /***/ })
 
