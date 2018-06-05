@@ -15,7 +15,19 @@ module.exports = {
     mode: 'development',
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Webpack app'
+            // title: 'Webpack app'
+            template: PATHS.source + '/index.pug'
         })
-    ]
+    ],
+    module: {
+        rules: [
+            {
+                test: /\.pug$/,
+                loader: 'pug-loader',
+                options: {
+                    pretty: true // расставить отступы и переносы строк
+                }
+            }
+        ]
+    }
 };
