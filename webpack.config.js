@@ -11,6 +11,7 @@ const images = require("./webpack/images");
 const uglifyJS = require("./webpack/js.uglify");
 const clean = require("./webpack/clean");
 const lintJS = require("./webpack/js.lint");
+const lintCSS = require("./webpack/sass.lint");
 
 const PATHS = {
   source: path.join(__dirname, "source"),
@@ -65,7 +66,8 @@ const common = merge([
   },
   pug(),
   images(),
-  lintJS({ paths: PATHS.sources })
+  lintJS({ paths: PATHS.sources }),
+  lintCSS()
 ]);
 
 module.exports = function(env) {
