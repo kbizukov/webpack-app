@@ -8,7 +8,7 @@ module.exports = function() {
         sourceMap: true,
         // warningsFilter: () => false,
         uglifyOptions: {
-          warnings: "verbose",
+          // warnings: "verbose",
           ecma: 6,
           keep_classnames: true,
           compress: true
