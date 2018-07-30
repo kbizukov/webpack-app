@@ -4,4 +4,4 @@ module.exports = function(paths) {
   return {
     plugins: [new CleanWebpackPlugin(paths)]
   };
-}
+};

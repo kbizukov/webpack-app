@@ -36,7 +36,7 @@ module.exports = function(paths) {
         },
         canPrint: true
       })
-    ]/* ,
+    ] /* ,
     optimization: {
       minimizer: [
         new OptimizeCssAssetsPlugin({

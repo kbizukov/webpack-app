@@ -10,6 +10,7 @@ const extractCSS = require("./webpack/css.extract");
 const images = require("./webpack/images");
 const uglifyJS = require("./webpack/js.uglify");
 const clean = require("./webpack/clean");
+const lintJS = require("./webpack/js.lint");
 
 const PATHS = {
   source: path.join(__dirname, "source"),
@@ -32,13 +33,17 @@ const common = merge([
         filename: "index.html",
         chunks: ["index", "common"],
         template: PATHS.source + "/pages/index/index.pug",
-        minify: true
+        minify: {
+          removeComments: true
+        }
       }),
       new HtmlWebpackPlugin({
         filename: "blog.html",
         chunks: ["blog", "common"],
         template: PATHS.source + "/pages/blog/blog.pug",
-        minify: true
+        minify: {
+          removeComments: true
+        }
       }),
       new webpack.ProvidePlugin({
         $: "jquery",
@@ -59,17 +64,13 @@ const common = merge([
     }
   },
   pug(),
-  images()
+  images(),
+  lintJS({ paths: PATHS.sources })
 ]);
 
 module.exports = function(env) {
   if (env === "production") {
-    return merge([
-      clean(),
-      common,
-      extractCSS(),
-      uglifyJS()
-    ]);
+    return merge([clean(), common, extractCSS(), uglifyJS()]);
   }
   if (env === "development") {
     return merge([
