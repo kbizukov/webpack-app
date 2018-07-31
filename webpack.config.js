@@ -12,6 +12,7 @@ const uglifyJS = require("./webpack/js.uglify");
 const clean = require("./webpack/clean");
 const lintJS = require("./webpack/js.lint");
 const lintCSS = require("./webpack/sass.lint");
+const favicon = require("./webpack/favicon");
 
 const PATHS = {
   source: path.join(__dirname, "source"),
@@ -72,7 +73,7 @@ const common = merge([
 
 module.exports = function(env) {
   if (env === "production") {
-    return merge([clean(), common, extractCSS(), uglifyJS()]);
+    return merge([clean(), common, extractCSS(), uglifyJS(), favicon()]);
   }
   if (env === "development") {
     return merge([
